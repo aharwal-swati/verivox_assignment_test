@@ -1,0 +1,98 @@
+<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event, 'speed')"
+          placeholder="Filter by speed"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event, 'price')"
+          placeholder="Filter by price"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event, 'name')"
+          placeholder="Filter by tariff name"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Recharge Plan</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="m-card-title"
+          test
+          data-label="name"
+        >
+          <a href='javascript:alert("open the name questionnairre");'>{{
+            element.name
+          }}</a>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="speed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Speed</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="m-card-sub-title"
+          data-label="speed"
+        >
+          <pre>{{ element.speed.download }}<span class="material-icons speedicon"> arrow_circle_down </span></pre>
+          <pre>{{ element.speed.upload }}<span class="material-icons speedicon"> arrow_circle_up </span></pre>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="benefit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Benefits</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="has_label_on_mobile"
+          data-label="benefit"
+        >
+          <ul>
+            <li *ngFor="let item of element.benefit">{{ item }}</li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="has_label_on_mobile"
+          data-label="price"
+        >
+          {{ element.price }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
