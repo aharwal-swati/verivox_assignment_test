@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     RechargePlansRoutingModule,
   ],
+  exports: [MatFormFieldModule, MatInputModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class RechargePlansModule {}

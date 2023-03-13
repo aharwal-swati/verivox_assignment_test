@@ -26,8 +26,6 @@ export class RechargePlansComponent {
     });
   }
 
-  setupFilter(column: any) {}
-
   applyFilter(filterValue: any, column: any) {
     if (column == 'price') {
       this.dataSource.filterPredicate = function (
